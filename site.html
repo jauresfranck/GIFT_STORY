@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>GiftStory – L’émotion derrière chaque cadeau</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg-main: #f9f5ff;
+      --bg-section: #ffffff;
+      --accent: #e88fbf;
+      --accent-soft: #ffe4f1;
+      --text-main: #333333;
+      --text-soft: #666666;
+      --border-soft: #f0e5ff;
+      --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.04);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      background: #ffffffcc;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-soft);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.6rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .logo span {
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      font-size: 0.8rem;
+    }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .nav li a {
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      transition: background 0.2s;
+    }
+
+    .nav li a:hover {
+      background: var(--accent-soft);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1.2rem 3rem;
+    }
+
+    section {
+      margin: 2.5rem 0;
+      background: var(--bg-section);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      padding: 1.8rem 1.6rem;
+    }
+
+    h1, h2, h3 {
+      font-weight: 700;
+      color: #222;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .tagline {
+      font-style: italic;
+      color: var(--accent);
+      margin-bottom: 1.4rem;
+    }
+
+    .btn-primary,
+    .btn-soft {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 10px 18px rgba(232, 143, 191, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 20px rgba(232, 143, 191, 0.4);
+    }
+
+    .btn-soft {
+      background: var(--accent-soft);
+      color: var(--text-main);
+    }
+
+    .btn-soft:hover {
+      background: #ffd1ea;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      font-size: 0.8rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-side {
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, #ffeaf5, #f3e6ff);
+      padding: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .hero-side p {
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-side-highlight {
+      font-weight: 600;
+      color: #b84f8b;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .step-card {
+      border-radius: var(--radius);
+      border: 1px solid var(--border-soft);
+      padding: 0.9rem;
+      background: #fcf9ff;
+      font-size: 0.9rem;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      font-weight: 600;
+      font-size: 0.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-footer {
+      margin-top: 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .section-note {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.3rem;
+      margin-top: 0.8rem;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      background: #f4ecff;
+      font-size: 0.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .gift-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 0.8rem;
+    }
+
+    .gift-card {
+      border-radius: var(--radius);
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+      background: #fefbff;
+      font-size: 0.85rem;
+    }
+
+    .gift-image {
+      background: #f2e9ff;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      overflow: hidden;
+    }
+
+    .gift-content {
+      padding: 0.7rem 0.9rem 0.9rem;
+    }
+
+    .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.1rem;
+      margin-top: 0.8rem;
+    }
+
+    .pricing-card {
+      border-radius: var(--radius);
+      border: 1px solid var(--border-soft);
+      padding: 1.1rem;
+      background: #fcf9ff;
+      font-size: 0.9rem;
+    }
+
+    .pricing-price {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0.4rem 0;
+    }
+
+    .pricing-tag {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-bottom: 0.6rem;
+    }
+
+    .pricing-card ul {
+      padding-left: 1rem;
+      margin: 0.4rem 0 0.8rem;
+      font-size: 0.85rem;
+    }
+
+    .bf-banner {
+      border-radius: var(--radius);
+      background: #111;
+      color: #fefefe;
+      padding: 1.1rem 1rem;
+      margin-top: 0.8rem;
+      display: grid;
+      grid-template-columns: 2.2fr 1.2fr;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .bf-ribbon {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: #ff3366;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+
+    .bf-percent {
+      font-size: 2.2rem;
+      font-weight: 800;
+    }
+
+    .bf-note {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      margin-top: 0.3rem;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+      margin-top: 0.8rem;
+    }
+
+    .testimonial-card {
+      border-radius: var(--radius);
+      border: 1px solid var(--border-soft);
+      padding: 0.9rem;
+      background: #fcf9ff;
+      font-size: 0.85rem;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+    }
+
+    .testimonial-meta {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-bottom: 0.3rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(220px, 1.1fr) 1.5fr;
+      gap: 1.2rem;
+      margin-top: 0.8rem;
+    }
+
+    .team-photo {
+      border-radius: var(--radius);
+      background: #f2e9ff;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      text-align: center;
+      padding: 0.8rem;
+      overflow: hidden;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.1rem;
+      margin-top: 0.8rem;
+    }
+
+    .contact-card {
+      border-radius: var(--radius);
+      border: 1px solid var(--border-soft);
+      padding: 0.9rem;
+      background: #fcf9ff;
+      font-size: 0.9rem;
+    }
+
+    .social-list {
+      list-style: none;
+      margin-top: 0.4rem;
+      font-size: 0.85rem;
+    }
+
+    .social-list li {
+      margin-bottom: 0.2rem;
+    }
+
+    .icon {
+      margin-right: 0.3rem;
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.5rem 1.2rem 1.4rem;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      text-align: center;
+    }
+
+    /* 🔥 Styles pour les images intégrées */
+    .gift-image img,
+    .team-photo img,
+    .bf-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    /* 🎯 Styles pour le quiz */
+    #quiz form {
+      font-size: 0.95rem;
+    }
+
+    #quiz select,
+    #quiz textarea {
+      margin-top: 0.3rem;
+      padding: 0.45rem 0.6rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-soft);
+      width: 100%;
+      font-family: inherit;
+    }
+
+    #quiz select:focus,
+    #quiz textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(232, 143, 191, 0.2);
+    }
+
+    #quiz label {
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+      display: inline-block;
+    }
+
+    @media (max-width: 750px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .bf-banner {
+        grid-template-columns: 1fr;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="logo">
+      <img src="logo.jpg" alt="Logo GiftStory" style="height:28px; border-radius:6px;">
+      <span>Chic & émotion</span>
+    </div>
+
+    <ul>
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#parcours">Parcours cadeau</a></li>
+      <li><a href="#exemples">Exemples</a></li>
+      <li><a href="#tarifs">Tarifs</a></li>
+      <li><a href="#black-friday">Black Friday</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <!-- ACCUEIL / HERO -->
+  <section id="accueil" class="hero">
+    <div>
+      <div class="hero-badge">
+        ✨ L’IA émotionnelle au service de vos cadeaux
+      </div>
+      <h1>Offrez un cadeau qui raconte une histoire.</h1>
+      <p class="subtitle">GiftStory transforme vos idées, vos émotions et vos petites attentions en cadeaux uniques, personnalisés et responsables.</p>
+      <p class="tagline">« Parce que le bon cadeau, ce n’est pas le prix, c’est l’intention. »</p>
+      <a href="#parcours" class="btn-primary">Trouver mon cadeau parfait</a>
+    </div>
+    <div class="hero-side">
+      <p class="hero-side-highlight">Comment ça marche ?</p>
+      <p>Vous nous donnez une occasion, une relation, quelques mots-clés…</p>
+      <p>Notre IA émotionnelle analyse les passions, la personnalité et les valeurs de la personne.</p>
+      <p>En quelques secondes, vous recevez des idées de cadeaux sur mesure, prêtes à être offertes.</p>
+    </div>
+  </section>
+
+  <!-- PARCOURS / ÉTAPES -->
+  <section id="parcours">
+    <h2>Votre parcours GiftStory en 4 étapes douces & simples</h2>
+    <p class="subtitle">On vous guide pas à pas, vous n’avez qu’à vous laisser porter.</p>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Choisissez l’occasion</h3>
+        <p>Anniversaire, Noël, pot de départ, Saint-Valentin, naissance… Sélectionnez l’événement à célébrer.</p>
+        <span class="pill">« Chaque moment mérite son histoire »</span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Définissez la relation</h3>
+        <p>Ami·e, collègue, membre de la famille, partenaire… Laissez-nous situer votre lien avec la personne.</p>
+        <span class="pill">Parce qu’on n’offre pas la même chose à tout le monde.</span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Répondez au mini-quiz</h3>
+        <p>Quelques questions rapides sur sa personnalité, ses passions, ses valeurs… et ce que vous voulez faire passer comme émotion.</p>
+        <span class="pill">« Dites-nous qui il/elle est, on vous dira quoi offrir. »</span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h3>Laissez l’IA créer la magie</h3>
+        <p>Notre IA émotionnelle génère une sélection de cadeaux personnalisés, illustrés et prêts à commander.</p>
+        <span class="pill">Le bon cadeau, au bon moment, pour la bonne personne.</span>
+      </div>
+    </div>
+
+    <div class="section-footer">
+      <a href="#quiz" class="btn-soft">Lancer l’IA GiftStory</a>
+      <p class="section-note">➜ Un clic suffit pour accéder à notre IA émotionnelle et voir vos recommandations en temps réel.</p>
+    </div>
+  </section>
+
+  <!-- SECTION IA -->
+  <section id="ia">
+    <h2>GiftStory IA – votre copilote émotionnel</h2>
+    <p class="subtitle">Une IA qui ne pense pas seulement en produits, mais en émotions.</p>
+
+    <div class="grid-2">
+      <div>
+        <p><strong>Ce que vous faites :</strong></p>
+        <ul style="padding-left:1rem; font-size:0.9rem; margin-top:0.3rem;">
+          <li>Vous saisissez quelques mots-clés (hobbies, traits de caractère, moments partagés…)</li>
+          <li>Vous précisez votre budget et vos valeurs (éco-responsable, local, durable…)</li>
+          <li>Vous indiquez l’occasion et la relation.</li>
+        </ul>
+        <p style="margin-top:0.6rem;"><strong>Ce que l’IA fait :</strong></p>
+        <ul style="padding-left:1rem; font-size:0.9rem; margin-top:0.3rem;">
+          <li>Analyse émotions, mots-clés et contexte.</li>
+          <li>Génère des idées de cadeaux illustrées et personnalisées.</li>
+          <li>Vous propose des « GiftStories » prêtes à être offertes.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="hero-side">
+          <p class="hero-side-highlight">Une IA douce, pas froide.</p>
+          <p>Notre IA ne se contente pas de recommander un produit : elle cherche à comprendre ce que vous voulez dire avec ce cadeau.</p>
+          <p>« Je pense à toi », « Merci », « Je t’aime », « Je suis fier·e de toi »…</p>
+          <p>GiftStory traduit vos émotions en objets, expériences et attentions concrètes.</p>
+          <a href="#quiz" class="btn-primary" style="margin-top:0.6rem; display:inline-block;">Commencer le quiz</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ GIFTSTORY -->
+  <section id="quiz">
+    <h2>Quiz GiftStory – Apprenez à connaître votre destinataire</h2>
+    <p class="subtitle">Répondez à ces quelques questions pour aider l’IA à créer un cadeau vraiment personnalisé.</p>
+
+    <form>
+      <!-- BLOC 1 – INFOS DE BASE -->
+      <h3>1. Informations de base</h3>
+
+      <p><strong>1. Pour quelle occasion cherchez-vous un cadeau ?</strong></p>
+      <select name="occasion">
+        <option value="">Sélectionnez une occasion</option>
+        <option>Anniversaire</option>
+        <option>Noël</option>
+        <option>Saint-Valentin</option>
+        <option>Pot de départ</option>
+        <option>Naissance</option>
+        <option>Autre</option>
+      </select>
+
+      <p style="margin-top:1rem;"><strong>2. Quel est votre lien avec cette personne ?</strong></p>
+      <select name="relation">
+        <option value="">Sélectionnez un lien</option>
+        <option>Partenaire (copain/copine, mari/femme…)</option>
+        <option>Ami·e proche</option>
+        <option>Collègue</option>
+        <option>Membre de la famille</option>
+        <option>Autre</option>
+      </select>
+
+      <p style="margin-top:1rem;"><strong>3. Quel âge a-t-elle / il ?</strong></p>
+      <select name="age">
+        <option value="">Sélectionnez une tranche d’âge</option>
+        <option>Moins de 18 ans</option>
+        <option>18–25 ans</option>
+        <option>26–35 ans</option>
+        <option>36–50 ans</option>
+        <option>Plus de 50 ans</option>
+      </select>
+
+      <!-- BLOC 2 – PORTRAIT RAPIDE -->
+      <h3 style="margin-top:1.8rem;">2. Portrait rapide</h3>
+
+      <p><strong>4. Comment décririez-vous sa personnalité ?</strong> <br><span style="font-size:0.85rem; color:#777;">(plusieurs réponses possibles)</span></p>
+      <label><input type="checkbox" name="personnalite" value="discret"> Discret·e / réservé·e</label><br>
+      <label><input type="checkbox" name="personnalite" value="extraverti"> Énergique / extraverti·e</label><br>
+      <label><input type="checkbox" name="personnalite" value="sensible"> Sensible / émotionnel·le</label><br>
+      <label><input type="checkbox" name="personnalite" value="drole"> Drôle / taquin·e</label><br>
+      <label><input type="checkbox" name="personnalite" value="serieux"> Sérieux·se / posé·e</label>
+
+      <p style="margin-top:1rem;"><strong>5. Qu’est-ce qu’elle/il apprécie le plus ?</strong></p>
+      <select name="apprecie">
+        <option value="">Sélectionnez une réponse</option>
+        <option>Partager des moments avec les autres</option>
+        <option>Recevoir des objets qu’elle/il peut garder</option>
+        <option>Découvrir de nouvelles expériences</option>
+        <option>Se faire chouchouter / prendre soin de soi</option>
+      </select>
+
+      <!-- BLOC 3 – PASSIONS & CENTRES D’INTÉRÊT -->
+      <h3 style="margin-top:1.8rem;">3. Passions & centres d’intérêt</h3>
+
+      <p><strong>6. Quels sont ses centres d’intérêt principaux ?</strong> <br><span style="font-size:0.85rem; color:#777;">(1 à 3 choix)</span></p>
+      <label><input type="checkbox" name="interets" value="mode"> Mode / beauté</label><br>
+      <label><input type="checkbox" name="interets" value="sport"> Sport / bien-être</label><br>
+      <label><input type="checkbox" name="interets" value="cuisine"> Cuisine / gourmandise</label><br>
+      <label><input type="checkbox" name="interets" value="lecture"> Lecture / écriture</label><br>
+      <label><input type="checkbox" name="interets" value="musique"> Musique / concerts</label><br>
+      <label><input type="checkbox" name="interets" value="voyages"> Voyages / découvertes</label><br>
+      <label><input type="checkbox" name="interets" value="jeux"> Jeux / séries / films</label><br>
+      <label><input type="checkbox" name="interets" value="autre"> Autre</label>
+
+      <p style="margin-top:1rem;"><strong>7. Y a-t-il une passion ou un sujet dont elle/il parle tout le temps ?</strong></p>
+      <textarea name="passion_texte" rows="3" style="width:100%;" placeholder="Ex. : le foot, les mangas, les plantes, les voyages…"></textarea>
+
+      <!-- BLOC 4 – VALEURS & STYLE -->
+      <h3 style="margin-top:1.8rem;">4. Valeurs & style de cadeau</h3>
+
+      <p><strong>8. Quelles valeurs sont importantes pour cette personne ?</strong></p>
+      <label><input type="checkbox" name="valeurs" value="eco"> Écologie / produits responsables</label><br>
+      <label><input type="checkbox" name="valeurs" value="artisanal"> Fait main / artisanal</label><br>
+      <label><input type="checkbox" name="valeurs" value="local"> Local / soutenir les petites marques</label><br>
+      <label><input type="checkbox" name="valeurs" value="premium"> Marques connues / qualité premium</label><br>
+      <label><input type="checkbox" name="valeurs" value="geste"> Peu importe, tant que le geste touche</label>
+
+      <p style="margin-top:1rem;"><strong>9. Quel type d’ambiance voulez-vous pour ce cadeau ?</strong></p>
+      <select name="ambiance">
+        <option value="">Sélectionnez une ambiance</option>
+        <option>Romantique</option>
+        <option>Drôle / décalé</option>
+        <option>Émotionnel / touchant</option>
+        <option>Classe / chic</option>
+        <option>Simple et utile</option>
+      </select>
+
+      <p style="margin-top:1rem;"><strong>10. Vous préférez que le cadeau soit plutôt…</strong></p>
+      <select name="type_cadeau">
+        <option value="">Sélectionnez une option</option>
+        <option>Une expérience à vivre</option>
+        <option>Un objet à garder</option>
+        <option>Un mélange des deux</option>
+      </select>
+
+      <!-- BLOC 5 – INTENTION DU CADEAU -->
+      <h3 style="margin-top:1.8rem;">5. Votre intention</h3>
+
+      <p><strong>11. Avec ce cadeau, vous voulez surtout :</strong></p>
+      <select name="intention">
+        <option value="">Sélectionnez une intention</option>
+        <option>Lui dire « Je pense à toi »</option>
+        <option>Lui dire « Je t’aime / tu comptes pour moi »</option>
+        <option>Le/la remercier</option>
+        <option>Le/la féliciter</option>
+        <option>Me réconcilier / dire « Pardon »</option>
+      </select>
+
+      <p style="margin-top:1rem;"><strong>12. Ce que vous aimeriez qu’elle/il ressente en ouvrant ce cadeau :</strong></p>
+      <textarea name="ressenti" rows="3" style="width:100%;" placeholder="Ex. : qu’il/elle se sente aimé·e, compris·e, soutenu·e…"></textarea>
+
+      <!-- BLOC 6 – CONTRAINTES PRATIQUES -->
+      <h3 style="margin-top:1.8rem;">6. Contraintes pratiques</h3>
+
+      <p><strong>13. Quel est votre budget approximatif ?</strong></p>
+      <select name="budget">
+        <option value="">Sélectionnez un budget</option>
+        <option>Moins de 20 €</option>
+        <option>20–50 €</option>
+        <option>50–100 €</option>
+        <option>Plus de 100 €</option>
+      </select>
+
+      <p style="margin-top:1rem;"><strong>14. Quel est votre délai ?</strong></p>
+      <select name="delai">
+        <option value="">Sélectionnez un délai</option>
+        <option>Très urgent (dans les 48h)</option>
+        <option>Dans la semaine</option>
+        <option>Pas urgent</option>
+      </select>
+
+      <p style="margin-top:1.4rem;">
+        <button type="button" class="btn-primary">Générer mes idées de cadeaux</button>
+      </p>
+    </form>
+  </section>
+
+  <!-- EXEMPLES DE CADEAUX -->
+  <section id="exemples">
+    <h2>Quelques exemples de cadeaux personnalisés</h2>
+    <p class="subtitle">Un aperçu des GiftStories que votre IA peut créer pour vous.</p>
+
+    <div class="gift-grid">
+
+      <div class="gift-card">
+        <div class="gift-image">
+          <img src="gift-socks.jpg.jpg" alt="Chaussettes personnalisées GiftStory">
+        </div>
+        <div class="gift-content">
+          <div class="label">Pour un ami</div>
+          <p><span class="highlight">Chaussettes personnalisées</span> avec un message privé caché à l’intérieur.</p>
+          <p>« Pour que tu marches toujours vers tes rêves. »</p>
+        </div>
+      </div>
+
+      <div class="gift-card">
+        <div class="gift-image">
+          <img src="gift-box.jpg.jpg" alt="Box souvenir personnalisée GiftStory">
+        </div>
+        <div class="gift-content">
+          <div class="label">Pour un·e partenaire</div>
+          <p><span class="highlight">Boîte souvenir</span> avec photo, lettre et petits objets symboliques.</p>
+          <p>« Chaque détail raconte un moment de nous. »</p>
+        </div>
+      </div>
+
+      <div class="gift-card">
+        <div class="gift-image">
+          <img src="gift-mug.jpg.jpg" alt="Mug personnalisé GiftStory">
+        </div>
+        <div class="gift-content">
+          <div class="label">Pour un parent</div>
+          <p><span class="highlight">Mug personnalisé</span> avec phrase intime ou private joke.</p>
+          <p>« Premier café, première pensée pour toi. »</p>
+        </div>
+      </div>
+
+      <div class="gift-card">
+        <div class="gift-image">
+          <img src="gift-poster.jpg.jpg" alt="Affiche personnalisée GiftStory">
+        </div>
+        <div class="gift-content">
+          <div class="label">Cadeau déco</div>
+          <p><span class="highlight">Affiche minimaliste</span> de votre ville, date clé ou coordonnées GPS.</p>
+          <p>« Ici, tout a commencé. »</p>
+        </div>
+      </div>
+
+      <div class="gift-card">
+        <div class="gift-image">
+          <img src="gift-wellness.jpg.jpg" alt="Coffret bien-être GiftStory">
+        </div>
+        <div class="gift-content">
+          <div class="label">Bien-être</div>
+          <p><span class="highlight">Coffret soin & douceur</span> pour encourager quelqu’un à prendre du temps pour soi.</p>
+          <p>« Tu mérites une pause, vraiment. »</p>
+        </div>
+      </div>
+
+      <div class="gift-card">
+        <div class="gift-image">
+          <img src="gift-experience.jpg.jpg" alt="Expérience à offrir GiftStory">
+        </div>
+        <div class="gift-content">
+          <div class="label">Expérience</div>
+          <p><span class="highlight">Bon pour une expérience</span> : atelier, concert, activité à deux…</p>
+          <p>« Les meilleurs cadeaux sont parfois des souvenirs. »</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BLACK FRIDAY -->
+  <section id="black-friday">
+    <h2>Black Friday – L’émotion à -50&nbsp;%</h2>
+    <p class="subtitle">Parce que faire plaisir peut aussi rimer avec bonnes affaires.</p>
+
+    <div class="bf-banner">
+      <div>
+        <div class="bf-ribbon">Offre limitée Black Friday</div>
+        <div class="bf-percent">-50&nbsp;%</div>
+        <p>sur tous les <strong>articles générés par l’IA</strong>.</p>
+        <p class="bf-note">La réduction s’applique automatiquement sur toutes les GiftStories recommandées pendant la période Black Friday.</p>
+      </div>
+      <div class="bf-image">
+        <img src="black-friday.jpg.jpg" alt="Promotion Black Friday GiftStory">
+      </div>
+    </div>
+  </section>
+
+  <!-- TARIFS -->
+  <section id="tarifs">
+    <h2>Tarifs & formules GiftStory</h2>
+    <p class="subtitle">Un accompagnement adapté, que vous soyez du genre « dernière minute » ou « tout est planifié ».</p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Découverte</h3>
+        <p class="pricing-price">0 €</p>
+        <p class="pricing-tag">Pour tester l’IA une première fois.</p>
+        <ul>
+          <li>1 parcours cadeau complet</li>
+          <li>3 idées de cadeaux générées</li>
+          <li>Suggestions éco-responsables incluses</li>
+        </ul>
+        <a href="#ia" class="btn-soft">Essayer gratuitement</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3>Essentiel</h3>
+        <p class="pricing-price">9,90 €</p>
+        <p class="pricing-tag">Idéal pour toutes vos grandes occasions.</p>
+        <ul>
+          <li>Cadeaux illimités pendant 1 mois</li>
+          <li>Idées détaillées + messages personnalisés</li>
+          <li>Accès aux GiftStories premium</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Parler à l’équipe</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3>Premium</h3>
+        <p class="pricing-price">Sur mesure</p>
+        <p class="pricing-tag">Pour les entreprises et événements spéciaux.</p>
+        <ul>
+          <li>Accompagnement personnalisé</li>
+          <li>Sélection de cadeaux de groupe</li>
+          <li>Intégration à vos événements internes</li>
+        </ul>
+        <a href="#contact" class="btn-soft">Demander un devis</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section id="temoignages">
+    <h2>Ils ont testé GiftStory</h2>
+    <p class="subtitle">Des expériences fictives… mais des émotions bien réelles.</p>
+
+    <div class="testimonials">
+      <div class="testimonial-card">
+        <div class="testimonial-name">Camille, 24 ans</div>
+        <div class="testimonial-meta">Lyon • Cadeau d’anniversaire</div>
+        <p>« D’habitude je galère pour trouver des idées… Là, l’IA m’a proposé 3 cadeaux qui correspondaient parfaitement à mon meilleur ami. Franchement, tout le monde devrait tester. »</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-name">Yanis, 31 ans</div>
+        <div class="testimonial-meta">Paris • Saint-Valentin</div>
+        <p>« J’avais peur que ça fasse trop “tech”, mais en vrai c’est hyper humain. GiftStory m’a aidé à mettre des mots et des objets sur ce que je ressens. »</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-name">Aïcha, 28 ans</div>
+        <div class="testimonial-meta">Marseille • Cadeau de départ</div>
+        <p>« On a trouvé un cadeau commun pour une collègue qui partait à l’étranger. C’était personnalisé, symbolique, et tout le monde a adoré. »</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="apropos">
+    <h2>À propos de l’équipe GiftStory</h2>
+    <p class="subtitle">Derrière chaque GiftStory, il y a une équipe qui croit à la puissance des petites attentions.</p>
+
+    <div class="about-grid">
+      <div class="team-photo">
+        <img src="equipe-giftstory.jpg.jpg" alt="Équipe GiftStory">
+      </div>
+      <div>
+        <p>Nous sommes une équipe d’étudiant·e·s passionné·e·s par l’innovation, l’IA et l’impact émotionnel des cadeaux. GiftStory est né d’un projet de groupe… et d’une envie simple :</p>
+        <p><strong>rendre l’acte d’offrir plus doux, plus conscient, plus humain.</strong></p>
+        <p style="margin-top:0.6rem;">Nous croyons aux cadeaux qui ont du sens, aux expériences qui restent, et aux attentions qui marquent les cœurs autant que les esprits.</p>
+        <p style="margin-top:0.4rem; font-size:0.9rem; color:var(--text-soft);">« Notre mission : que vous n’ayez plus jamais l’impression d’offrir quelque chose “par défaut”. »</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact & réseaux</h2>
+    <p class="subtitle">Une question, une idée, une collaboration ? On est là.</p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Contactez-nous</h3>
+        <p><span class="icon">💌</span>Email :</p>
+        <p><a href="mailto:giftstory.contact@yaomei.com">giftstory.contact@yaomei.com</a></p>
+        <p style="margin-top:0.5rem;"><span class="icon">📍</span>Basé en France, ouvert au monde.</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Nos réseaux</h3>
+        <ul class="social-list">
+          <li><span class="icon">📸</span>Instagram : <strong>@GiftStory</strong></li>
+          <li><span class="icon">📘</span>Facebook : <strong>GiftStory</strong></li>
+          <li><span class="icon">▶</span>YouTube : <strong>GiftStory</strong></li>
+        </ul>
+        <p style="margin-top:0.5rem; font-size:0.85rem;">Suivez nos nouveautés, idées cadeaux et inspirations émotionnelles.</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Un petit mot pour finir</h3>
+        <p style="font-size:0.9rem;">Offrir, c’est parler une langue que tout le monde comprend.</p>
+        <p style="margin-top:0.3rem; font-size:0.9rem;">Avec GiftStory, cette langue devient plus douce, plus précise, plus vous.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © GiftStory – Projet étudiant. Toutes les histoires commencent par une intention. 💗
+</footer>
+
+</body>
+</html>
