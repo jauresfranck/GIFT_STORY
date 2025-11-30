@@ -518,7 +518,7 @@
       <li><a href="#accueil">Accueil</a></li>
       <li><a href="#parcours">Parcours cadeau</a></li>
       <li><a href="#exemples">Exemples</a></li>
-      <!-- Lien Tarifs supprimé -->
+      <li><a href="#tarifs">Tarifs</a></li>
       <li><a href="#black-friday">Black Friday</a></li>
       <li><a href="#apropos">À propos</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -625,8 +625,139 @@
     <p class="subtitle">Répondez à ces quelques questions pour aider l’IA à créer un cadeau vraiment personnalisé.</p>
 
     <form>
-      <!-- (tout le contenu du quiz inchangé) -->
-      <!-- ... -->
+      <!-- BLOC 1 – INFOS DE BASE -->
+      <h3>1. Informations de base</h3>
+
+      <p><strong>1. Pour quelle occasion cherchez-vous un cadeau ?</strong></p>
+      <select name="occasion">
+        <option value="">Sélectionnez une occasion</option>
+        <option>Anniversaire</option>
+        <option>Noël</option>
+        <option>Saint-Valentin</option>
+        <option>Pot de départ</option>
+        <option>Naissance</option>
+        <option>Autre</option>
+      </select>
+
+      <p style="margin-top:1rem;"><strong>2. Quel est votre lien avec cette personne ?</strong></p>
+      <select name="relation">
+        <option value="">Sélectionnez un lien</option>
+        <option>Partenaire (copain/copine, mari/femme…)</option>
+        <option>Ami·e proche</option>
+        <option>Collègue</option>
+        <option>Membre de la famille</option>
+        <option>Autre</option>
+      </select>
+
+      <p style="margin-top:1rem;"><strong>3. Quel âge a-t-elle / il ?</strong></p>
+      <select name="age">
+        <option value="">Sélectionnez une tranche d’âge</option>
+        <option>Moins de 18 ans</option>
+        <option>18–25 ans</option>
+        <option>26–35 ans</option>
+        <option>36–50 ans</option>
+        <option>Plus de 50 ans</option>
+      </select>
+
+      <!-- BLOC 2 – PORTRAIT RAPIDE -->
+      <h3 style="margin-top:1.8rem;">2. Portrait rapide</h3>
+
+      <p><strong>4. Comment décririez-vous sa personnalité ?</strong> <br><span style="font-size:0.85rem; color:#777;">(plusieurs réponses possibles)</span></p>
+      <label><input type="checkbox" name="personnalite" value="discret"> Discret·e / réservé·e</label><br>
+      <label><input type="checkbox" name="personnalite" value="extraverti"> Énergique / extraverti·e</label><br>
+      <label><input type="checkbox" name="personnalite" value="sensible"> Sensible / émotionnel·le</label><br>
+      <label><input type="checkbox" name="personnalite" value="drole"> Drôle / taquin·e</label><br>
+      <label><input type="checkbox" name="personnalite" value="serieux"> Sérieux·se / posé·e</label>
+
+      <p style="margin-top:1rem;"><strong>5. Qu’est-ce qu’elle/il apprécie le plus ?</strong></p>
+      <select name="apprecie">
+        <option value="">Sélectionnez une réponse</option>
+        <option>Partager des moments avec les autres</option>
+        <option>Recevoir des objets qu’elle/il peut garder</option>
+        <option>Découvrir de nouvelles expériences</option>
+        <option>Se faire chouchouter / prendre soin de soi</option>
+      </select>
+
+      <!-- BLOC 3 – PASSIONS & CENTRES D’INTÉRÊT -->
+      <h3 style="margin-top:1.8rem;">3. Passions & centres d’intérêt</h3>
+
+      <p><strong>6. Quels sont ses centres d’intérêt principaux ?</strong> <br><span style="font-size:0.85rem; color:#777;">(1 à 3 choix)</span></p>
+      <label><input type="checkbox" name="interets" value="mode"> Mode / beauté</label><br>
+      <label><input type="checkbox" name="interets" value="sport"> Sport / bien-être</label><br>
+      <label><input type="checkbox" name="interets" value="cuisine"> Cuisine / gourmandise</label><br>
+      <label><input type="checkbox" name="interets" value="lecture"> Lecture / écriture</label><br>
+      <label><input type="checkbox" name="interets" value="musique"> Musique / concerts</label><br>
+      <label><input type="checkbox" name="interets" value="voyages"> Voyages / découvertes</label><br>
+      <label><input type="checkbox" name="interets" value="jeux"> Jeux / séries / films</label><br>
+      <label><input type="checkbox" name="interets" value="autre"> Autre</label>
+
+      <p style="margin-top:1rem;"><strong>7. Y a-t-il une passion ou un sujet dont elle/il parle tout le temps ?</strong></p>
+      <textarea name="passion_texte" rows="3" style="width:100%;" placeholder="Ex. : le foot, les mangas, les plantes, les voyages…"></textarea>
+
+      <!-- BLOC 4 – VALEURS & STYLE -->
+      <h3 style="margin-top:1.8rem;">4. Valeurs & style de cadeau</h3>
+
+      <p><strong>8. Quelles valeurs sont importantes pour cette personne ?</strong></p>
+      <label><input type="checkbox" name="valeurs" value="eco"> Écologie / produits responsables</label><br>
+      <label><input type="checkbox" name="valeurs" value="artisanal"> Fait main / artisanal</label><br>
+      <label><input type="checkbox" name="valeurs" value="local"> Local / soutenir les petites marques</label><br>
+      <label><input type="checkbox" name="valeurs" value="premium"> Marques connues / qualité premium</label><br>
+      <label><input type="checkbox" name="valeurs" value="geste"> Peu importe, tant que le geste touche</label>
+
+      <p style="margin-top:1rem;"><strong>9. Quel type d’ambiance voulez-vous pour ce cadeau ?</strong></p>
+      <select name="ambiance">
+        <option value="">Sélectionnez une ambiance</option>
+        <option>Romantique</option>
+        <option>Drôle / décalé</option>
+        <option>Émotionnel / touchant</option>
+        <option>Classe / chic</option>
+        <option>Simple et utile</option>
+      </select>
+
+      <p style="margin-top:1rem;"><strong>10. Vous préférez que le cadeau soit plutôt…</strong></p>
+      <select name="type_cadeau">
+        <option value="">Sélectionnez une option</option>
+        <option>Une expérience à vivre</option>
+        <option>Un objet à garder</option>
+        <option>Un mélange des deux</option>
+      </select>
+
+      <!-- BLOC 5 – INTENTION DU CADEAU -->
+      <h3 style="margin-top:1.8rem;">5. Votre intention</h3>
+
+      <p><strong>11. Avec ce cadeau, vous voulez surtout :</strong></p>
+      <select name="intention">
+        <option value="">Sélectionnez une intention</option>
+        <option>Lui dire « Je pense à toi »</option>
+        <option>Lui dire « Je t’aime / tu comptes pour moi »</option>
+        <option>Le/la remercier</option>
+        <option>Le/la féliciter</option>
+        <option>Me réconcilier / dire « Pardon »</option>
+      </select>
+
+      <p style="margin-top:1rem;"><strong>12. Ce que vous aimeriez qu’elle/il ressente en ouvrant ce cadeau :</strong></p>
+      <textarea name="ressenti" rows="3" style="width:100%;" placeholder="Ex. : qu’il/elle se sente aimé·e, compris·e, soutenu·e…"></textarea>
+
+      <!-- BLOC 6 – CONTRAINTES PRATIQUES -->
+      <h3 style="margin-top:1.8rem;">6. Contraintes pratiques</h3>
+
+      <p><strong>13. Quel est votre budget approximatif ?</strong></p>
+      <select name="budget">
+        <option value="">Sélectionnez un budget</option>
+        <option>Moins de 20 €</option>
+        <option>20–50 €</option>
+        <option>50–100 €</option>
+        <option>Plus de 100 €</option>
+      </select>
+
+      <p style="margin-top:1rem;"><strong>14. Quel est votre délai ?</strong></p>
+      <select name="delai">
+        <option value="">Sélectionnez un délai</option>
+        <option>Très urgent (dans les 48h)</option>
+        <option>Dans la semaine</option>
+        <option>Pas urgent</option>
+      </select>
+
       <p style="margin-top:1.4rem;">
         <button type="button" class="btn-primary">Générer mes idées de cadeaux</button>
       </p>
@@ -639,8 +770,73 @@
     <p class="subtitle">Un aperçu des GiftStories que votre IA peut créer pour vous.</p>
 
     <div class="gift-grid">
-      <!-- cartes cadeaux inchangées -->
-      <!-- ... -->
+
+      <div class="gift-card">
+        <div class="gift-image">
+          <img src="gift-socks.jpg.jpg" alt="Chaussettes personnalisées GiftStory">
+        </div>
+        <div class="gift-content">
+          <div class="label">Pour un ami</div>
+          <p><span class="highlight">Chaussettes personnalisées</span> avec un message privé caché à l’intérieur.</p>
+          <p>« Pour que tu marches toujours vers tes rêves. »</p>
+        </div>
+      </div>
+
+      <div class="gift-card">
+        <div class="gift-image">
+          <img src="gift-box.jpg.jpg" alt="Box souvenir personnalisée GiftStory">
+        </div>
+        <div class="gift-content">
+          <div class="label">Pour un·e partenaire</div>
+          <p><span class="highlight">Boîte souvenir</span> avec photo, lettre et petits objets symboliques.</p>
+          <p>« Chaque détail raconte un moment de nous. »</p>
+        </div>
+      </div>
+
+      <div class="gift-card">
+        <div class="gift-image">
+          <img src="gift-mug.jpg.jpg" alt="Mug personnalisé GiftStory">
+        </div>
+        <div class="gift-content">
+          <div class="label">Pour un parent</div>
+          <p><span class="highlight">Mug personnalisé</span> avec phrase intime ou private joke.</p>
+          <p>« Premier café, première pensée pour toi. »</p>
+        </div>
+      </div>
+
+      <div class="gift-card">
+        <div class="gift-image">
+          <img src="gift-poster.jpg.jpg" alt="Affiche personnalisée GiftStory">
+        </div>
+        <div class="gift-content">
+          <div class="label">Cadeau déco</div>
+          <p><span class="highlight">Affiche minimaliste</span> de votre ville, date clé ou coordonnées GPS.</p>
+          <p>« Ici, tout a commencé. »</p>
+        </div>
+      </div>
+
+      <div class="gift-card">
+        <div class="gift-image">
+          <img src="gift-wellness.jpg.jpg" alt="Coffret bien-être GiftStory">
+        </div>
+        <div class="gift-content">
+          <div class="label">Bien-être</div>
+          <p><span class="highlight">Coffret soin & douceur</span> pour encourager quelqu’un à prendre du temps pour soi.</p>
+          <p>« Tu mérites une pause, vraiment. »</p>
+        </div>
+      </div>
+
+      <div class="gift-card">
+        <div class="gift-image">
+          <img src="gift-experience.jpg.jpg" alt="Expérience à offrir GiftStory">
+        </div>
+        <div class="gift-content">
+          <div class="label">Expérience</div>
+          <p><span class="highlight">Bon pour une expérience</span> : atelier, concert, activité à deux…</p>
+          <p>« Les meilleurs cadeaux sont parfois des souvenirs. »</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -662,14 +858,31 @@
     </div>
   </section>
 
+  <!-- (SECTION TARIFS SUPPRIMÉE ICI) -->
+
   <!-- TÉMOIGNAGES -->
   <section id="temoignages">
     <h2>Ils ont testé GiftStory</h2>
     <p class="subtitle">Des expériences fictives… mais des émotions bien réelles.</p>
 
     <div class="testimonials">
-      <!-- témoignages inchangés -->
-      <!-- ... -->
+      <div class="testimonial-card">
+        <div class="testimonial-name">Camille, 24 ans</div>
+        <div class="testimonial-meta">Lyon • Cadeau d’anniversaire</div>
+        <p>« D’habitude je galère pour trouver des idées… Là, l’IA m’a proposé 3 cadeaux qui correspondaient parfaitement à mon meilleur ami. Franchement, tout le monde devrait tester. »</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-name">Yanis, 31 ans</div>
+        <div class="testimonial-meta">Paris • Saint-Valentin</div>
+        <p>« J’avais peur que ça fasse trop “tech”, mais en vrai c’est hyper humain. GiftStory m’a aidé à mettre des mots et des objets sur ce que je ressens. »</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-name">Aïcha, 28 ans</div>
+        <div class="testimonial-meta">Marseille • Cadeau de départ</div>
+        <p>« On a trouvé un cadeau commun pour une collègue qui partait à l’étranger. C’était personnalisé, symbolique, et tout le monde a adoré. »</p>
+      </div>
     </div>
   </section>
 
